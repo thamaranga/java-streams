@@ -4,10 +4,8 @@ package com.hasithat.main;
 import com.hasithat.beans.Car;
 import com.hasithat.mockdata.MockData;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StatisticsWithStreams {
 
@@ -22,6 +20,8 @@ public class StatisticsWithStreams {
             average();
             System.out.println("******************************");
             sum();
+            System.out.println("******************************");
+            allStats();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -69,6 +69,12 @@ public class StatisticsWithStreams {
         List<Car> cars = MockData.getCars();
         double sum = cars.stream().mapToDouble(Car::getPrice).sum();
         System.out.println(sum);
+    }
+
+    public static void allStats() throws Exception {
+        List<Car> cars = MockData.getCars();
+        DoubleSummaryStatistics doubleSummaryStatistics=cars.stream().mapToDouble(a->a.getPrice()).summaryStatistics();
+        System.out.println(doubleSummaryStatistics);
     }
 
 
