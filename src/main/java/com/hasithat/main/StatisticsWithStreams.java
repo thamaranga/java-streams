@@ -42,6 +42,8 @@ public class StatisticsWithStreams {
             Car car = carWithMinPrice.get();
             System.out.println(car);
         }
+        Double min2ndway=cars.stream().mapToDouble(c->c.getPrice()).min().getAsDouble();
+        System.out.println("min2ndway "+min2ndway);
     }
 
 

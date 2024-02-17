@@ -43,7 +43,8 @@ public class Sorting {
         /*List<Person> sortByAge = people.stream().sorted((p1, p2)->p1.getAge().compareTo(p2.getAge())).collect(Collectors.toList());
         sortByAge.forEach(person-> System.out.println(person));*/
         //2 nd way
-        List<Person> sortByAgeAnotherWay = people.stream().sorted(Comparator.comparing(p -> p.getAge())).collect(Collectors.toList());
+        List<Person> sortByAgeAnotherWay = people.stream().sorted(
+                Comparator.comparing(p -> p.getAge())).collect(Collectors.toList());
         sortByAgeAnotherWay.forEach(person -> System.out.println(person));
 
 

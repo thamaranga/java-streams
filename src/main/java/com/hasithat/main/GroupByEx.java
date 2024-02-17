@@ -16,8 +16,13 @@ public class GroupByEx {
         people.add(new Person(40, "Sunil"));
         people.add(new Person(45, "Kumara"));
 
-        Map<Integer, List<Person>> groupByAge = people.stream().collect(Collectors.groupingBy(Person::getAge));
+        //Below both the ways are correct
+        //Map<Integer, List<Person>> groupByAge = people.stream().collect(Collectors.groupingBy(Person::getAge));
+        Map<Integer, List<Person>> groupByAge = people.stream().collect(Collectors.groupingBy(p->p.getAge()));
         System.out.println(groupByAge);
+        Map<Integer, Long> groupByAgeAndDisplayCountOnly = people.stream().collect(Collectors.groupingBy(Person::getAge, Collectors.counting()));
+        System.out.println("***************");
+        System.out.println(groupByAgeAndDisplayCountOnly);
 
     }
 
